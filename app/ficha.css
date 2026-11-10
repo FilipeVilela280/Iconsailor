@@ -1,0 +1,11 @@
+/* Ficha da fração: maior e fotografias sem barras pretas.
+   Ficheiro separado do globals.css de propósito. */
+.modal:has(.sheet2){padding:1.5vh 1.5vw}
+.sheet2{width:min(1640px,100%);max-height:97vh;grid-template-columns:340px 1fr}
+.sheet2 .s2-view{min-height:70vh}
+.sheet2 .s2-view img{max-height:calc(97vh - 140px)}
+.sheet2 .s2-view.photo{background:var(--stone);min-height:76vh;overflow:hidden}
+.sheet2 .s2-view.photo img{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;object-fit:cover}
+.sheet2 .s2-view.photo .nb,.sheet2 .s2-view.photo .s2-cap{z-index:1}
+@media (max-width:900px){.sheet2{grid-template-columns:1fr}.sheet2 .s2-view{min-height:48vh}.sheet2 .s2-view.photo{min-height:56vw}}
+@media print{.sheet2{max-height:none;width:100%;grid-template-columns:62mm 1fr}}

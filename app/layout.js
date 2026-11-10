@@ -9,6 +9,7 @@ import '@fontsource/cormorant-garamond/400-italic.css';
 import '@fontsource/cormorant-garamond/500-italic.css';
 import '@fontsource-variable/manrope';
 import './globals.css';
+import './ficha.css';
 
 
 export const metadata = {
