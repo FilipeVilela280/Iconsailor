@@ -1,0 +1,14 @@
+# Dependências
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Ficheiros privados
+.env
+.env.local
+.env.production
+
+# Outros
+.DS_Store
