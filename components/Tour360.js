@@ -66,7 +66,6 @@ export default function Tour360() {
   const [rodar, setRodar] = useState(true);
   const [erro, setErro] = useState(false);
   const [aviso, setAviso] = useState('');
-  const [proporcao, setProporcao] = useState({}); // largura/altura de cada planta, para caberem todas no mesmo quadrado
 
   const copiar = useCallback((txt) => {
     navigator.clipboard?.writeText(txt).catch(() => {});
@@ -262,25 +261,8 @@ export default function Tour360() {
           ))}
         </div>
 
-        {/* Moldura quadrada igual para todas as plantas; os pontos ficam por cima da imagem */}
-        <div className="t360-plan-frame">
-        <div
-          className={`t360-plan ${editar ? 'edit' : ''}`}
-          onClick={cliquePlanta}
-          style={(() => {
-            const r = proporcao[pisoAtual.planta] || 1;
-            return { aspectRatio: r, width: r >= 1 ? '100%' : 'auto', height: r >= 1 ? 'auto' : '100%' };
-          })()}
-        >
-          <img
-            src={pisoAtual.planta}
-            alt={`Planta ${pisoAtual.nome}`}
-            draggable={false}
-            onLoad={(e) => {
-              const { naturalWidth: w, naturalHeight: h } = e.currentTarget;
-              if (w && h) setProporcao((p) => ({ ...p, [pisoAtual.planta]: w / h }));
-            }}
-          />
+        <div className={`t360-plan ${editar ? 'edit' : ''}`} onClick={cliquePlanta}>
+          <img src={pisoAtual.planta} alt={`Planta ${pisoAtual.nome}`} draggable={false} />
           {divisoesPiso.map((x) => (
             <button
               key={x.id}
@@ -292,7 +274,6 @@ export default function Tour360() {
               <span>{x.nome}</span>
             </button>
           ))}
-        </div>
         </div>
 
         <ul className="t360-list">
