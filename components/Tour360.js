@@ -73,6 +73,11 @@ export default function Tour360() {
     setAviso(txt);
   }, []);
 
+  // No telemóvel a planta começa escondida (abre no botão "Ver planta")
+  useEffect(() => {
+    if (window.innerWidth <= 820) setPainel(false);
+  }, []);
+
   // Cria o visualizador
   useEffect(() => {
     let alive = true;

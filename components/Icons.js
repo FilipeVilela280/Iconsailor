@@ -1,4 +1,5 @@
-// Logótipo (símbolo) e ícones partilhados
+// Logótipo e ícones partilhados
+import Logo from './Logo';
 
 /** Símbolo Icon Sailor: duas velas + linha de água. Usa a cor do texto (currentColor). */
 export function Mark({ className, style, color }) {
@@ -11,11 +12,11 @@ export function Mark({ className, style, color }) {
   );
 }
 
-export function Brand({ style, markSize = 40 }) {
+/** Logótipo usado na navbar e no rodapé (L1 · Clássico, só lettering). */
+export function Brand({ style, sub = true }) {
   return (
     <span className="brand" style={style}>
-      <Mark className="mark" style={{ width: markSize, height: markSize }} />
-      <span className="wm"><b>ICON SAILOR</b><small>PRAIA DA BARRA</small></span>
+      <Logo sub={sub} />
     </span>
   );
 }

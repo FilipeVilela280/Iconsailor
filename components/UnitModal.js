@@ -1,4 +1,5 @@
 'use client';
+import Logo from './Logo';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -58,7 +59,7 @@ export default function UnitModal({ unitId, onClose, onSelect, startWithForm }) 
 
         {/* ---------- coluna de dados ---------- */}
         <aside className="s2-side">
-          <div className="s2-brand"><span>ICON <i>SAILOR</i></span></div>
+          <div className="s2-brand"><Logo /></div>
           <div className="s2-badge">{t.name} · {u.id}<small>Fração {u.code}</small></div>
           <span className={`st ${u.st}`}>{ST_NAME[u.st]}</span>
 

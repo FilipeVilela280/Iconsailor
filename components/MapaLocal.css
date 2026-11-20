@@ -49,6 +49,7 @@
   .mi{height:auto;min-height:0;display:flex;flex-direction:column}
   .mi-map{position:relative;height:62vh;order:2}
   .mi-card{position:relative;transform:none;left:auto;top:auto;width:auto;box-shadow:none;order:1}
-  .mi-info{position:absolute;top:auto;bottom:12px;right:12px;left:12px;width:auto}
+  /* no telemóvel a descrição do local fica por baixo do mapa, sem o tapar */
+  .mi-info{position:relative;order:3;top:auto;bottom:auto;right:auto;left:auto;width:auto;margin:0;box-shadow:none;border-top:3px solid var(--tile);padding:22px 20px}
 }
 .mi-proj-pulse,.mi-proj-label{pointer-events:none}
