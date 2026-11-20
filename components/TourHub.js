@@ -142,7 +142,7 @@ export default function TourHub() {
                 {units.map((u) => <span key={u.id} className={`st ${u.st}`} title={ST_NAME[u.st]}>{u.id}</span>)}
               </div>
               <div className="hub-acts">
-                <button className="btn solid" onClick={() => router.push(`/tour?cena=${t.scene}`)}>Entrar na visita <Arrow /></button>
+                <button className="btn solid" onClick={() => router.push(t.tour360 || `/tour?cena=${t.scene}`)}>{t.tour360 ? "Visita 360°" : "Entrar na visita"} <Arrow /></button>
                 <Link className="btn" href={`/disponibilidade?tipo=${t.tipo}`}>Ver frações</Link>
               </div>
             </div>

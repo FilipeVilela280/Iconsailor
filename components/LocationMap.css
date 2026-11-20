@@ -1,0 +1,30 @@
+/* Mapa da Localização (estilo catálogo) */
+.locmap{position:relative;background:#F4F7F8;border:1px solid rgba(36,69,60,.1);overflow:hidden}
+.locmap img{display:block;width:100%;height:auto}
+.locmap svg{position:absolute;inset:0;width:100%;height:100%}
+
+.lm-line{stroke:#24453C;stroke-width:3;opacity:.45;stroke-dasharray:1;stroke-dashoffset:0;transition:opacity .4s,stroke-width .4s}
+.locmap.has-active .lm-line{opacity:.12}
+.locmap .lm-line.on{opacity:1;stroke-width:6;animation:lm-draw .7s var(--ease) both}
+@keyframes lm-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+
+.lm-poi{cursor:pointer}
+.lm-poi .hit{fill:transparent}
+.lm-poi .ring{fill:rgba(255,255,255,.85);stroke:#24453C;stroke-width:3;transition:r .35s var(--ease),fill .35s}
+.lm-poi .dot{fill:#3E6E5F;transition:fill .35s}
+.lm-poi:hover .ring,.lm-poi.on .ring{r:46px;fill:#24453C}
+.lm-poi:hover .dot,.lm-poi.on .dot{fill:#9CC5B2}
+
+.lm-sailor .pulse{fill:#24453C;opacity:0;transform-box:fill-box;transform-origin:center;animation:lm-pulse 2.8s ease-out infinite}
+.lm-sailor .pulse.p2{animation-delay:1.4s}
+@keyframes lm-pulse{0%{transform:scale(1);opacity:.35}100%{transform:scale(3.2);opacity:0}}
+
+.lm-tip{position:absolute;transform:translate(-50%,calc(-100% - 22px));background:#24453C;color:#F3EFE8;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:8px 12px;white-space:nowrap;pointer-events:none;animation:fade .3s}
+.lm-tip::after{content:'';position:absolute;left:50%;bottom:-6px;margin-left:-6px;border:6px solid transparent;border-bottom:0;border-top-color:#24453C}
+
+.dist li.on{padding-left:8px}
+.dist li.on b{color:var(--tile)}
+.lm-tip.l{transform:translate(-30px,calc(-100% - 22px))}.lm-tip.l::after{left:30px}
+.lm-tip.r{transform:translate(calc(-100% + 30px),calc(-100% - 22px))}.lm-tip.r::after{left:auto;right:24px}
+/* mapa mais largo que a lista */
+@media (min-width:901px){.locsplit{grid-template-columns:.75fr 1.25fr;align-items:center;gap:56px}}

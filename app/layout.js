@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SiteEffects from '@/components/SiteEffects';
+import PageNav from '@/components/PageNav';
 // Fontes instaladas localmente (sem depender do Google Fonts)
 import '@fontsource/cormorant-garamond/400.css';
 import '@fontsource/cormorant-garamond/500.css';
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       <body>
         <Navbar />
         {children}
+        <PageNav />
         <Footer />
         <SiteEffects />
       </body>

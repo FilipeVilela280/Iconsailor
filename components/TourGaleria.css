@@ -1,0 +1,44 @@
+/* Página Tour — galeria de divisões (components/TourGaleria.js) */
+.tg{background:var(--stone);padding-top:calc(var(--nav-h) + clamp(40px,7vw,96px));padding-bottom:clamp(60px,8vw,110px)}
+.tg-head{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,80px);align-items:end}
+.tg-head .h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.8rem,6.4vw,5.6rem);line-height:.95;margin-top:18px;color:var(--tile)}
+.tg-head .h1 em{font-style:italic;color:var(--tile-2)}
+.tg-intro{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.tg-intro .lead{margin:0}
+
+.tg-filter{margin-top:clamp(36px,5vw,64px);padding:18px 0;border-top:1px solid rgba(36,69,60,.18);border-bottom:1px solid rgba(36,69,60,.18);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.tg-filter>span{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.tg-filter div{display:flex;gap:6px}
+.tg-filter button{border:1px solid rgba(36,69,60,.25);background:transparent;color:var(--tile);padding:10px 18px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .25s,color .25s}
+.tg-filter button:hover{border-color:var(--tile)}
+.tg-filter button.on{background:var(--tile);color:#fff;border-color:var(--tile)}
+
+.tg-grid{margin-top:clamp(28px,4vw,48px);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,22px)}
+.tg-card{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;color:#fff;isolation:isolate;animation:tg-in .6s var(--ease) both}
+.tg-card.big{grid-column:span 2;aspect-ratio:auto;min-height:100%}
+@keyframes tg-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+/* imagem: a própria 360 — ao passar o rato "roda" devagar */
+.tg-img{position:absolute;inset:0;z-index:-2;background-size:auto 240%;background-repeat:repeat-x;transition:background-position 7s linear,transform 1s var(--ease)}
+.tg-card:hover .tg-img{background-position:calc(var(--x) + 18%) 54% !important;transform:scale(1.03)}
+.tg-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,19,17,0) 45%,rgba(14,19,17,.75));transition:opacity .4s}
+.tg-badge{position:absolute;top:16px;left:16px;padding:6px 10px;border:1px solid rgba(255,255,255,.7);font-size:.62rem;letter-spacing:.2em;font-weight:600;backdrop-filter:blur(6px);background:rgba(14,19,17,.25)}
+.tg-txt{position:absolute;left:clamp(16px,2vw,26px);right:clamp(16px,2vw,26px);bottom:clamp(16px,2vw,24px);display:flex;flex-direction:column;gap:6px}
+.tg-txt small{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#9CC5B2}
+.tg-txt b{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.2vw,2rem);line-height:1.05}
+.tg-card.big .tg-txt b{font-size:clamp(2rem,3.4vw,3.2rem)}
+.tg-txt em{font-style:normal;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.tg-card:hover .tg-txt em,.tg-card:focus-visible .tg-txt em{opacity:1;transform:none}
+
+.tg-note{margin-top:clamp(32px,4vw,52px);font-size:.9rem;color:var(--muted)}
+.tg-note a{color:var(--tile);text-decoration:underline}
+
+@media (max-width:900px){
+  .tg-head{grid-template-columns:1fr}
+  .tg-grid{grid-template-columns:1fr 1fr}
+  .tg-card.big{grid-column:span 2;aspect-ratio:16/10}
+}
+@media (max-width:560px){
+  .tg-grid{grid-template-columns:1fr}
+  .tg-card.big{grid-column:auto;aspect-ratio:4/5}
+  .tg-txt em{opacity:1;transform:none}
+}

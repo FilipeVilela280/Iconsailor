@@ -28,7 +28,7 @@ export default function Navbar() {
 
   useEffect(() => setOpen(false), [path]);
 
-  const solid = path !== '/tour' && (!HERO_PAGES.includes(path) || scrolled);
+  const solid = !path.startsWith('/tour/') && (!HERO_PAGES.includes(path) || scrolled); // /tour/… = visita 360° em ecrã inteiro
 
   return (
     <nav className={`nav ${solid ? 'solid' : ''}`}>

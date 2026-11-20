@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SeaLines from '@/components/SeaLines';
 import { Hero, Figure, Clip } from '@/components/Media';
+import Carousel from '@/components/Carousel';
 import { TYPES, TYPE_ORDER, plan } from '@/data/types';
 
 export const metadata = { title: 'Apartamentos' };
@@ -92,10 +93,12 @@ export default function Apartamentos() {
             <h2 className="h2">Um ritual <em>diário de spa.</em></h2>
             <p className="lead">Bases de duche ao nível do chão, torneiras encastradas em preto mate, móveis suspensos em carvalho e uma parede de azulejo vidrado que muda com a luz.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-            <Figure className="tall" src="/img/interiores/wc-verde.jpg" alt="Casa de banho verde" sizes="25vw" />
-            <Figure className="tall" src="/img/interiores/wc-azul.jpg" alt="Casa de banho azul" style={{ marginTop: 60 }} sizes="25vw" />
-          </div>
+          <Carousel
+            slides={[
+              { src: '/img/interiores/wc-verde.jpg', cap: 'Casa de banho · azulejo verde' },
+              { src: '/img/interiores/wc-azul.jpg', cap: 'Casa de banho · azulejo azul' },
+            ]}
+          />
         </div>
       </section>
 

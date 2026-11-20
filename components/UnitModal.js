@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import { TYPES, img, plan } from '@/data/types';
 import { UNITS, FLOORS, ST_NAME, extTotal, m2, floorLabel } from '@/data/units';
 import { KeyPlan, Elevation } from './BuildingSchema';
-import { Mark, Arrow } from './Icons';
+import { Arrow } from './Icons';
 import ParkingPlan from './ParkingPlan';
 import { spotsOf, parkingArea, SPOT_TYPE } from '@/data/parking';
 import { openLightbox } from './SiteEffects';
@@ -18,9 +18,10 @@ export default function UnitModal({ unitId, onClose, onSelect, startWithForm }) 
   const [i, setI] = useState(0);
   const [showForm, setShowForm] = useState(!!startWithForm);
   const [sent, setSent] = useState(false);
+  const [view, setView] = useState(null); // andar escolhido no alçado (null = o da fração)
   const formRef = useRef(null);
 
-  useEffect(() => { setTab(startWithForm ? 'contacto' : 'planta'); setI(0); setShowForm(!!startWithForm); setSent(false); }, [unitId, startWithForm]);
+  useEffect(() => { setTab(startWithForm ? 'contacto' : 'planta'); setI(0); setShowForm(!!startWithForm); setSent(false); setView(null); }, [unitId, startWithForm]);
   useEffect(() => {
     document.body.style.overflow = u ? 'hidden' : '';
     const onKey = (e) => e.key === 'Escape' && onClose();
@@ -57,7 +58,7 @@ export default function UnitModal({ unitId, onClose, onSelect, startWithForm }) 
 
         {/* ---------- coluna de dados ---------- */}
         <aside className="s2-side">
-          <div className="s2-brand"><Mark style={{ width: 34, height: 34, color: 'var(--tile)' }} /><span>ICON SAILOR</span></div>
+          <div className="s2-brand"><span>ICON <i>SAILOR</i></span></div>
           <div className="s2-badge">{t.name} · {u.id}<small>Fração {u.code}</small></div>
           <span className={`st ${u.st}`}>{ST_NAME[u.st]}</span>
 
@@ -68,19 +69,38 @@ export default function UnitModal({ unitId, onClose, onSelect, startWithForm }) 
           </dl>
 
           <div className="s2-block">
-            <h6>Alçado <small>/ Elevation</small></h6>
-            <Elevation floors={floors} size="100%" />
+            <h6>Alçado <small>/ Clique num andar</small></h6>
+            <Elevation
+              floors={floors}
+              current={view}
+              size="100%"
+              onPick={(f) => setView(floors.includes(f) ? null : f)}
+            />
           </div>
           <div className="s2-block">
-            <h6>{floorLabel(u)} <small>/ Floor</small></h6>
-            <div className="s2-keys">
-              {floors.map((f) => (
-                <div key={f}>
-                  <KeyPlan floor={f} selected={u.id} mono onSelect={(id) => id !== u.id && onSelect(id)} />
-                  {floors.length > 1 && <small>{FLOORS[f].name}</small>}
+            {view === null ? (
+              <>
+                <h6>{floorLabel(u)} <small>/ Floor</small></h6>
+                <div className="s2-keys">
+                  {floors.map((f) => (
+                    <div key={f}>
+                      <KeyPlan floor={f} selected={u.id} mono onSelect={(id) => id !== u.id && onSelect(id)} />
+                      {floors.length > 1 && <small>{FLOORS[f].name}</small>}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </>
+            ) : (
+              <>
+                <h6>{FLOORS[view].name} <small>/ Escolha uma fração</small></h6>
+                <div className="s2-keys">
+                  <div>
+                    <KeyPlan floor={view} onSelect={(id) => id !== u.id && onSelect(id)} />
+                  </div>
+                </div>
+                <button className="s2-back" onClick={() => setView(null)}>← Voltar à fração {u.id}</button>
+              </>
+            )}
           </div>
           <div className="s2-block s2-park" onClick={() => setTabSafe('garagem')}>
             <h6>Estacionamento <small>/ Parking</small></h6>
@@ -175,7 +195,7 @@ export default function UnitModal({ unitId, onClose, onSelect, startWithForm }) 
               ))}
             </div>
             <div className="pp-page">
-              <div className="pp-head"><Mark style={{ width: 26, height: 26 }} /><span>ICON SAILOR</span><b>{t.name} · {u.id} · Fotografias</b></div>
+              <div className="pp-head"><span>ICON <i>SAILOR</i></span><b>{t.name} · {u.id} · Fotografias</b></div>
               <div className="pp-photos">
                 {t.gal.map((n) => (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -184,7 +204,7 @@ export default function UnitModal({ unitId, onClose, onSelect, startWithForm }) 
               </div>
             </div>
             <div className="pp-page">
-              <div className="pp-head"><Mark style={{ width: 26, height: 26 }} /><span>ICON SAILOR</span><b>{t.name} · {u.id} · Estacionamento</b></div>
+              <div className="pp-head"><span>ICON <i>SAILOR</i></span><b>{t.name} · {u.id} · Estacionamento</b></div>
               <div className="pp-garage">
                 <ParkingPlan unit={u.id} />
                 <div className="s2-garage-list">

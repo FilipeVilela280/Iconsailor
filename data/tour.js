@@ -17,6 +17,7 @@ export const ORBIT_VIDEO = null; // ex.: '/video/tour/orbita.mp4'
 export const TOUR_TYPES = [
   {
     k: 'T4', label: 'T4 Duplex', tipo: 'T4', units: ['H'], pin: [0.29, 0.33], lift: 0.14, scene: 't4-sala',
+    tour360: '/tour/t4', // visita 360° (data/tour360.js)
     blurb: 'Não é apenas um apartamento. É um refúgio onde o horizonte encontra o mar — 180,72 m² em dois pisos, terraço com piscina e vista para a Ria e o Farol.',
     slides: [
       { img: 'cobertura-piscina', cap: 'Terraço com piscina' },

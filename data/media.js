@@ -19,6 +19,7 @@ export const DISTANCES = [
   { p: 'praia', name: 'Praia do Paredão (Praia Velha)', v: 8, u: 'min a pé' },
   { p: 'farol', name: 'Farol da Barra', v: 8, u: 'min a pé' },
   { p: 'escola', name: 'Escola e creche', v: 5, u: 'min a pé' },
+  { p: 'parque', name: 'Parque infantil Quinta da Barra', v: 10, u: 'min a pé' },
   { p: 'costa', name: 'Costa Nova', v: 5, u: 'min de carro' },
   { p: 'aveiro', name: 'Centro de Aveiro', v: 15, u: 'min de carro' },
   { p: 'porto', name: 'Aeroporto do Porto', v: 60, u: 'min de carro' },

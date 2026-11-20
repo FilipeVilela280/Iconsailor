@@ -1,0 +1,6 @@
+/* Botão "página seguinte" no fim das páginas */
+.pagenav{display:flex;justify-content:center;padding:64px 0 72px}
+.pagenav-btn{display:inline-flex;align-items:center;gap:14px;padding:16px 30px;border:1px solid var(--tile);color:var(--tile);font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;font-weight:600;transition:background .3s,color .3s,gap .3s}
+.pagenav-btn:hover{background:var(--tile);color:#fff;gap:20px}
+.pagenav-btn .arrow{width:18px;height:10px}
+@media print{.pagenav{display:none}}

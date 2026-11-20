@@ -6,7 +6,7 @@ import { CONTACTS, PROMOTER, LEGAL, telHref } from '@/data/contacts';
 
 export default function Footer() {
   const path = usePathname();
-  if (path === '/tour') return null;
+  if (path.startsWith('/tour/')) return null; // visita 360° em ecrã inteiro
   return (
     <footer>
       <div className="wrap">

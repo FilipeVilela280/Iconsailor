@@ -1,11 +1,17 @@
-/* Ficha da fração: maior e fotografias sem barras pretas.
-   Ficheiro separado do globals.css de propósito. */
-.modal:has(.sheet2){padding:1.5vh 1.5vw}
-.sheet2{width:min(1640px,100%);max-height:97vh;grid-template-columns:340px 1fr}
-.sheet2 .s2-view{min-height:70vh}
-.sheet2 .s2-view img{max-height:calc(97vh - 140px)}
-.sheet2 .s2-view.photo{background:var(--stone);min-height:76vh;overflow:hidden}
+/* Ficha da fração: tamanho e fotografias sem barras pretas.
+   Ficheiro separado do globals.css de propósito.
+   Para ajustar: largura (1360px), altura máxima (90vh), altura das fotos (60vh). */
+.sheet2{width:min(1360px,100%);max-height:90vh;grid-template-columns:300px 1fr}
+.sheet2 .s2-view{min-height:56vh}
+.sheet2 .s2-view img{max-height:calc(90vh - 150px)}
+.sheet2 .s2-view.photo{background:var(--stone);min-height:60vh;overflow:hidden}
 .sheet2 .s2-view.photo img{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;object-fit:cover}
 .sheet2 .s2-view.photo .nb,.sheet2 .s2-view.photo .s2-cap{z-index:1}
-@media (max-width:900px){.sheet2{grid-template-columns:1fr}.sheet2 .s2-view{min-height:48vh}.sheet2 .s2-view.photo{min-height:56vw}}
+@media (max-width:900px){.sheet2{grid-template-columns:1fr}.sheet2 .s2-view{min-height:46vh}.sheet2 .s2-view.photo{min-height:56vw}}
 @media print{.sheet2{max-height:none;width:100%;grid-template-columns:62mm 1fr}}
+.sheet2 .s2-view:not(.photo){align-items:flex-start}
+/* Alçado clicável na ficha */
+.sheet2 .s2-block svg .u{cursor:pointer}
+.sheet2 .s2-block svg .u:hover rect:first-child{fill:#9CC5B2}
+.sheet2 .s2-back{margin-top:8px;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--tile);background:none;border:0;padding:0;cursor:pointer}
+.sheet2 .s2-back:hover{text-decoration:underline}
