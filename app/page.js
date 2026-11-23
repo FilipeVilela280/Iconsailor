@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import SeaLines from '@/components/SeaLines';
 import Link from 'next/link';
-import { Hero, Clip } from '@/components/Media';
+import { Hero, Clip, Figure } from '@/components/Media';
 import { Arrow, Play } from '@/components/Icons';
 
 const PATHS = [
@@ -28,10 +28,10 @@ export default function Home() {
             <p className="eyebrow">Onde o mar inspira o quotidiano</p>
             <h2 className="h2">Um território <em>moldado pela água.</em></h2>
             <p className="lead">Profundamente ligada à tradição marítima portuguesa, a Gafanha da Nazaré preserva uma identidade cultural autêntica — na gastronomia, nas tradições locais e na relação histórica com o mar. A poucos minutos das praias da Barra e da Costa Nova, oferece um estilo de vida onde natureza e bem-estar coexistem em perfeita harmonia.</p>
-            <p className="lead">T1, T2 e um T4 Duplex no topo com piscina privativa — pensados para viver o ano inteiro ou para os dias longos de verão.</p>
+            <p className="lead">T1, T2 e um T4 Duplex no topo com piscina privativa pensados para viver o ano inteiro ou para os dias longos de verão.</p>
             <div style={{ marginTop: 34 }}><Link href="/projeto" className="btn">Conhecer o projeto <Arrow /></Link></div>
           </div>
-          <Clip name="fachada-esquina" cap="Fachada · Esquina" className="tall" />
+          <Figure src="/img/exterior/fachada-principal.jpg" alt="Fachada principal do Icon Sailor" cap="Fachada principal" className="tall" />
         </div>
         <div className="wrap stats reveal">
           <div><b>9</b><span>Residências</span></div>

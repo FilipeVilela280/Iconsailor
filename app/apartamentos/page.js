@@ -33,8 +33,8 @@ export default function Apartamentos() {
           <div className="reveal">
             <p className="eyebrow">Luz e serenidade</p>
             <h2 className="h2">O privilégio <em>de abrandar.</em></h2>
-            <p className="lead">Sob a luz da Praia da Barra, os dias ganham um ritmo próprio, embalados pelo oceano e pela tranquilidade da ria. Em cada espaço, uma harmonia silenciosa une o exterior ao conforto privado — um estilo de vida feito de despertares calmos e da paz de saber que a pressa do mundo fica sempre à porta.</p>
-            <p className="lead">Cada detalhe — do ripado em madeira ao azulejo verde da cozinha — foi escolhido para envelhecer bem e ser bom ao toque.</p>
+            <p className="lead">Sob a luz da Praia da Barra, os dias ganham um ritmo próprio, embalados pelo oceano e pela tranquilidade da ria. Em cada espaço, uma harmonia silenciosa une o exterior ao conforto privado um estilo de vida feito de despertares calmos e da paz de saber que a pressa do mundo fica sempre à porta.</p>
+            
           </div>
           <Figure className="tall" src="/img/interiores/t2-1-varanda.jpg" cap="Varanda · T2.1" />
         </div>
@@ -110,7 +110,7 @@ export default function Apartamentos() {
           <div className="clips feelings">
             {FEELINGS.map(([clip, h, p]) => (
               <div key={clip} className="reveal">
-                <Clip name={clip} style={{ aspectRatio: '4/5' }} />
+                <Clip name={clip} style={{ aspectRatio: '4/5' }} zoom={false} />
                 <h3 className="feel-h">{h}</h3>
                 <p className="feel-p">{p}</p>
               </div>

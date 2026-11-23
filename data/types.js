@@ -4,8 +4,8 @@
 const EXTERIOR = ['aerea-farol', 'aerea-ria', 'ext-tres-quartos', 'ext-esquina', 'ext-fachada', 'cobertura-piscina', 'cobertura-terraco', 'entrada-lobby'];
 
 export const img = (n) => `/img/${EXTERIOR.includes(n) ? 'exterior' : 'interiores'}/${n}.jpg`;
-// Plantas no estilo do catálogo (paredes verdes). Para voltar às originais, tire "estilo/".
-export const plan = (n) => `/img/plantas/estilo/${n}.jpg`;
+// Plantas renderizadas originais (/public/img/plantas). As versões verdes ficam em /plantas/estilo, já não são usadas.
+export const plan = (n) => `/img/plantas/${n}.jpg`;
 
 export const TYPES = {
   T1: {

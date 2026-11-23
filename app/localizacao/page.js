@@ -30,12 +30,7 @@ export default function Localizacao() {
         <MapaInterativo />
       </Suspense>
 
-      <section className="blk">
-        <div className="wrap mosaic">
-          <Clip className="m1" name="drone-farol" cap="Para poente · Farol e Atlântico" />
-          <Figure className="m2" src="/img/exterior/cobertura-terraco.jpg" cap="Para nascente · Ria de Aveiro" sizes="40vw" />
-        </div>
-      </section>
+     
     </main>
   );
 }

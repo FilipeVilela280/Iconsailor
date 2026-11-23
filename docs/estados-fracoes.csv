@@ -1,0 +1,10 @@
+Fração,Código,Tipologia,Piso,Estado,Preço,Notas
+A,0.1,T2,Piso 0,Disponível,,
+B,0.2,T1,Piso 0,Vendido,,
+C,0.3,T2,Piso 0,Reservado,,
+D,1.1,T2,Piso 1,Disponível,,
+E,1.2,T1,Piso 1,Disponível,,
+F,1.3,T2,Piso 1,Vendido,,
+G,2.1,T2,Piso 2,Disponível,,
+H,2.2,T4 Duplex,Pisos 2 + 3,Disponível,,
+I,2.3,T2,Piso 2,Reservado,,

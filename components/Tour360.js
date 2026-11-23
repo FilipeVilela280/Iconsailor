@@ -11,9 +11,10 @@ import './Tour360.css';
 // Movimento — ajuste aqui (tempos em milissegundos)
 const MOV = {
   campo: 100,        // abertura normal da câmara (graus)
-  aproximar: 55,     // quanto a câmara "avança" para a porta antes de mudar de divisão
+  zoomPassagem: false, // true = a câmara avança (zoom) para a porta ao mudar de divisão; false = sem zoom
+  aproximar: 55,     // quanto a câmara "avança" para a porta (só se zoomPassagem: true)
   virar: 650,        // tempo a virar/avançar para a porta
-  fade: 800,         // tempo da passagem entre divisões
+  fade: 1200,         // tempo da passagem entre divisões
   chegada: 1300,     // tempo a afastar ao chegar à nova divisão
   parado: 4000,      // tempo parado até começar a rodar sozinho
   velocidade: -2.2,  // velocidade da rotação automática (negativo = para a esquerda)
@@ -197,12 +198,17 @@ export default function Tour360() {
     ultimoToque.current = Date.now();
     v.stopAutoRotate();
     const destino = byId[id];
+    // sem zoomPassagem a abertura da câmara mantém-se sempre igual (MOV.campo)
+    const hfPorta = MOV.zoomPassagem ? MOV.aproximar : MOV.campo;
+    const hfChegada = MOV.zoomPassagem ? MOV.aproximar + 10 : MOV.campo;
     const entrar = () => {
-      chegada.current = true;
-      v.loadScene(id, destino.inicio?.pitch ?? 0, destino.inicio?.yaw ?? 0, MOV.aproximar + 10);
+      chegada.current = MOV.zoomPassagem;
+      if (!MOV.zoomPassagem) setTimeout(() => { aMudar.current = false; }, MOV.fade);
+      v.loadScene(id, destino.inicio?.pitch ?? 0, destino.inicio?.yaw ?? 0, hfChegada);
     };
-    if (typeof yaw === 'number') v.lookAt(pitch ?? -8, yaw, MOV.aproximar, MOV.virar, entrar);
-    else { v.setHfov(MOV.aproximar + 10, MOV.virar * 0.6); setTimeout(entrar, MOV.virar * 0.6); }
+    if (typeof yaw === 'number') v.lookAt(pitch ?? -8, yaw, hfPorta, MOV.virar, entrar);
+    else if (MOV.zoomPassagem) { v.setHfov(hfPorta, MOV.virar * 0.6); setTimeout(entrar, MOV.virar * 0.6); }
+    else entrar();
     setTimeout(() => { aMudar.current = false; }, MOV.virar + MOV.fade + MOV.chegada + 400); // segurança
   };
   irRef.current = ir;
@@ -261,6 +267,8 @@ export default function Tour360() {
           ))}
         </div>
 
+        {/* moldura de tamanho fixo: o painel tem as mesmas dimensões em todos os pisos */}
+        <div className="t360-planbox">
         <div className={`t360-plan ${editar ? 'edit' : ''}`} onClick={cliquePlanta}>
           <img src={pisoAtual.planta} alt={`Planta ${pisoAtual.nome}`} draggable={false} />
           {divisoesPiso.map((x) => (
@@ -274,6 +282,7 @@ export default function Tour360() {
               <span>{x.nome}</span>
             </button>
           ))}
+        </div>
         </div>
 
         <ul className="t360-list">

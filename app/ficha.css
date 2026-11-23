@@ -1,15 +1,46 @@
-/* Ficha da fração: tamanho e fotografias sem barras pretas.
+/* Ficha da fração — barras FIXAS.
    Ficheiro separado do globals.css de propósito.
-   Para ajustar: largura (1360px), altura máxima (90vh), altura das fotos (60vh). */
-.sheet2{width:min(1360px,100%);max-height:90vh;grid-template-columns:300px 1fr}
-.sheet2 .s2-view{min-height:56vh}
-.sheet2 .s2-view img{max-height:calc(90vh - 150px)}
-.sheet2 .s2-view.photo{background:var(--stone);min-height:60vh;overflow:hidden}
-.sheet2 .s2-view.photo img{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;object-fit:cover}
-.sheet2 .s2-view.photo .nb,.sheet2 .s2-view.photo .s2-cap{z-index:1}
-@media (max-width:900px){.sheet2{grid-template-columns:1fr}.sheet2 .s2-view{min-height:46vh}.sheet2 .s2-view.photo{min-height:56vw}}
+   A ficha tem altura fixa (ecrã): os separadores ficam fixos em cima, os botões fixos em baixo
+   e só o conteúdo do meio (planta / fotos / garagem / áreas / contacto) muda ou faz scroll.
+   Para ajustar: largura (1360px) e altura (94vh / 920px). */
+@media screen{
+  .modal{padding:2.5vh 2.5vw}
+  .sheet2{width:min(1360px,100%);height:min(94vh,920px);max-height:none;overflow:hidden;
+    grid-template-columns:300px minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+  /* coluna de dados com scroll próprio */
+  .sheet2 .s2-side{overflow-y:auto;min-height:0;scrollbar-width:thin}
+  /* coluna principal: tabs (fixo) · conteúdo (flexível) · rodapé (fixo) */
+  .sheet2 .s2-main{display:flex;flex-direction:column;min-height:0;min-width:0;overflow:hidden}
+  .sheet2 .s2-tabs{flex:none;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;background:var(--white)}
+  .sheet2 .s2-tabs::-webkit-scrollbar{display:none}
+  .sheet2 .s2-tabs button{flex:none}
+  .sheet2 .s2-foot{flex:none;background:var(--white);padding:14px 26px 14px}
+  .sheet2 .s2-foot .btn{flex:none;white-space:nowrap}
+  .sheet2 .s2-legal{margin-top:2px}
+  .sheet2 .s2-view,.sheet2 .s2-garage,.sheet2 .s2-rooms,.sheet2 .s2-form{flex:1 1 auto;min-height:0;overflow-y:auto}
+  .sheet2 .s2-print{display:none}
+  /* planta: ocupa sempre o espaço disponível, sem cortar */
+  .sheet2 .s2-view{min-height:0;padding:0;background:#fff}
+  .sheet2 .s2-view img{position:absolute;top:56px;bottom:38px;left:70px;width:calc(100% - 140px);height:calc(100% - 94px);
+    max-width:none;max-height:none;object-fit:contain}
+  .sheet2 .s2-view .nb{z-index:2}
+  .sheet2 .s2-view .s2-cap,.sheet2 .s2-view .s2-hint{z-index:1}
+  /* fotografias sem barras pretas */
+  .sheet2 .s2-view.photo{background:var(--stone);overflow:hidden}
+  .sheet2 .s2-view.photo img{top:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;cursor:default}
+}
+@media screen and (max-width:900px){
+  .modal{padding:0}
+  .sheet2{height:100vh;height:100dvh;grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
+  .sheet2 .s2-side{max-height:32vh;padding:16px 18px;gap:10px}
+  .sheet2 .s2-tabs{padding:12px 64px 0 12px}
+  .sheet2 .s2-tabs button{padding:11px 11px;letter-spacing:.14em}
+  .sheet2 .s2-view img{left:52px;width:calc(100% - 104px)}
+  .sheet2 .s2-foot{padding:10px 12px;gap:8px}
+  .sheet2 .s2-foot .btn{padding:12px 14px;font-size:.62rem;letter-spacing:.14em}
+  .sheet2 .s2-legal{display:none}
+}
 @media print{.sheet2{max-height:none;width:100%;grid-template-columns:62mm 1fr}}
-.sheet2 .s2-view:not(.photo){align-items:flex-start}
 /* Alçado clicável na ficha */
 .sheet2 .s2-block svg .u{cursor:pointer}
 .sheet2 .s2-block svg .u:hover rect:first-child{fill:#9CC5B2}

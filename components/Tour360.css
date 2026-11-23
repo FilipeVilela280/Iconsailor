@@ -77,3 +77,13 @@
 .t360 .pnlm-panorama-info,.t360 .pnlm-about-msg{display:none!important}
 @media (min-width:821px){.t360-panel{width:min(440px,40vw)}}
 .t360 .pnlm-load-box{display:none!important}
+
+/* Painel da planta com tamanho FIXO, igual em todos os pisos.
+   --ph = altura da moldura da planta. A planta encaixa lá dentro, centrada, sem deformar;
+   os pontos continuam alinhados porque acompanham a imagem. */
+.t360-panel{--ph:min(420px,calc(100vh - var(--nav-h) - 300px));--pw:calc(min(440px,40vw) - 32px)}
+.t360-planbox{flex:none;height:var(--ph);display:grid;place-items:center;background:#fff;overflow:hidden}
+.t360-planbox .t360-plan{align-self:center;flex:none}
+.t360-planbox .t360-plan img{max-width:var(--pw);max-height:var(--ph)}
+.t360-list{min-height:64px;align-content:flex-start}
+@media (max-width:820px){.t360-panel{--ph:24vh;--pw:calc(100vw - 56px)}}

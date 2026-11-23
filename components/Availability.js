@@ -19,7 +19,7 @@ export default function Availability() {
 
   useEffect(() => {
     const t = params.get('tipo'); if (t) setTy(t);
-    if (params.get('contacto')) { setOpen(UNITS.find((u) => u.st === 'd').id); setWithForm(true); }
+    if (params.get('contacto')) { setOpen((UNITS.find((u) => u.st === 'd') || UNITS[0]).id); setWithForm(true); }
   }, [params]);
 
   const pass = useCallback((u) => (ty === 'all' || u.ty === ty) && (!onlyAvail || u.st === 'd'), [ty, onlyAvail]);

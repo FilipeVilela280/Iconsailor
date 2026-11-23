@@ -2,6 +2,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SiteEffects from '@/components/SiteEffects';
 import PageNav from '@/components/PageNav';
+import UnitStatus from '@/components/UnitStatus';
+import { getStatuses } from '@/data/sheet';
 // Fontes instaladas localmente (sem depender do Google Fonts)
 import '@fontsource/cormorant-garamond/400.css';
 import '@fontsource/cormorant-garamond/500.css';
@@ -21,15 +23,19 @@ export const metadata = {
   openGraph: { title: 'Icon Sailor · Praia da Barra', images: ['/img/exterior/ext-tres-quartos.jpg'], locale: 'pt_PT', type: 'website' },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  // Estados das frações vindos da folha Google Sheets (atualiza a cada 60 s). Ver data/sheet.js
+  const statuses = await getStatuses();
   return (
     <html lang="pt">
       <body>
-        <Navbar />
-        {children}
-        <PageNav />
-        <Footer />
-        <SiteEffects />
+        <UnitStatus data={statuses}>
+          <Navbar />
+          {children}
+          <PageNav />
+          <Footer />
+          <SiteEffects />
+        </UnitStatus>
       </body>
     </html>
   );

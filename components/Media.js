@@ -29,10 +29,11 @@ export function Figure({ src, alt = '', cap, className = '', style, sizes = '(ma
   );
 }
 
-/** Clipe de vídeo que toca quando visível e abre em grande ao clicar */
-export function Clip({ name, cap, className = '', style, showPlay }) {
+/** Clipe de vídeo que toca quando visível e abre em grande ao clicar.
+ *  zoom={false} → o vídeo continua a tocar sozinho, mas não abre em grande ao clicar. */
+export function Clip({ name, cap, className = '', style, showPlay, zoom = true }) {
   return (
-    <figure className={`clipfig reveal ${className}`} style={style} data-clip={name}>
+    <figure className={`clipfig reveal ${className}`} style={zoom ? style : { ...style, cursor: 'default' }} data-clip={zoom ? name : undefined}>
       <video src={`/video/${name}.mp4`} poster={`/video/${name}.jpg`} muted loop playsInline data-auto preload="none" />
       {cap && <figcaption>{cap}</figcaption>}
       {showPlay && <span className="play"><Play style={{ width: 12, height: 12, color: '#fff' }} /></span>}

@@ -1,3 +1,19 @@
-node_modules
-.next
-out
+# Dependências
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Ficheiros privados (o .env.example é para ir para o GitHub)
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Vercel
+.vercel
+
+# Outros
+.DS_Store
+Thumbs.db
