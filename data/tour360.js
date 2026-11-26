@@ -22,6 +22,8 @@
 //   capa     (opcional) imagem normal para o cartão na página Tour, ex: '/img/interiores/t4-sala.jpg'.
 //            Sem capa, o cartão usa a própria imagem 360 virada para o "inicio".
 //
+// Imagens 360 atualizadas a 26/11 (2576×1288). Terraços e quarto do piso 2 são novos:
+// confirme as setas e os pontos na planta com ?editar=1
 // Para trocar uma imagem por uma de melhor qualidade, basta gravar o novo
 // ficheiro com o mesmo nome em /public/img/tour360/.
 // =====================================================================
@@ -49,6 +51,7 @@ export const DIVISOES = [
     ligacoes: [
       { para: 'p2-cozinha', yaw: 9, pitch: -6 },
       { para: 'p2-corredor-escada', yaw: 49, pitch: -6 },
+      { para: 'terraco-1', yaw: -167, pitch: -6 },
     ],
   },
   {
@@ -60,6 +63,30 @@ export const DIVISOES = [
     inicio: { yaw: 0, pitch: -5 },
     ligacoes: [
       { para: 'p2-sala', yaw: 168, pitch: -8 },
+    ],
+  },
+  {
+    id: 'terraco-1',
+    nome: 'Terraço · jantar',
+    piso: 'piso2',
+    imagem: '/img/tour360/terraco-1.jpg',
+    planta: { x: 85, y: 66 },
+    inicio: { yaw: -15, pitch: 0 },
+    ligacoes: [
+      { para: 'p2-sala', yaw: -15, pitch: -4 },
+      { para: 'terraco-2', yaw: 70, pitch: -10 },
+    ],
+  },
+  {
+    id: 'terraco-2',
+    nome: 'Terraço · piscina',
+    piso: 'piso2',
+    imagem: '/img/tour360/terraco-2.jpg',
+    planta: { x: 66, y: 30 },
+    inicio: { yaw: 0, pitch: 0 },
+    ligacoes: [
+      { para: 'terraco-1', yaw: -84, pitch: -10 },
+      { para: 'p2-quarto', yaw: 5, pitch: -4 },
     ],
   },
   {
@@ -99,6 +126,19 @@ export const DIVISOES = [
     ligacoes: [
       { para: 'p2-corredor-quartos', yaw: 176, pitch: -8 },
       { para: 'p2-casa-de-banho-2', yaw: -164, pitch: -8 },
+      { para: 'p2-quarto', yaw: 90, pitch: -8 },
+    ],
+  },
+  {
+    id: 'p2-quarto',
+    nome: 'Quarto · piso 2',
+    piso: 'piso2',
+    imagem: '/img/tour360/p2-quarto.jpg',
+    planta: { x: 38, y: 33 },
+    inicio: { yaw: 0, pitch: -5 },
+    ligacoes: [
+      { para: 'p2-armario-quarto', yaw: -144, pitch: -8 },
+      { para: 'terraco-2', yaw: 71, pitch: -6 },
     ],
   },
   {
@@ -183,10 +223,10 @@ export const DIVISOES = [
     piso: 'piso1',
     imagem: '/img/tour360/p1-quarto-2.jpg',
     planta: { x: 70, y: 75 },
-    inicio: { yaw: -100, pitch: -5 },
+    inicio: { yaw: 80, pitch: -5 },
     ligacoes: [
-      { para: 'p1-casa-de-banho-suite', yaw: 45, pitch: -8 },
-      { para: 'p1-corredor-escada', yaw: 66, pitch: -8 },
+      { para: 'p1-casa-de-banho-suite', yaw: -135, pitch: -8 },
+      { para: 'p1-corredor-escada', yaw: -114, pitch: -8 },
     ],
   },
   {
@@ -195,9 +235,9 @@ export const DIVISOES = [
     piso: 'piso1',
     imagem: '/img/tour360/p1-casa-de-banho-suite.jpg',
     planta: { x: 25, y: 67 },
-    inicio: { yaw: 60, pitch: -5 },
+    inicio: { yaw: -120, pitch: -5 },
     ligacoes: [
-      { para: 'p1-quarto-2', yaw: -9, pitch: -8 },
+      { para: 'p1-quarto-2', yaw: 171, pitch: -8 },
     ],
   },
   {
